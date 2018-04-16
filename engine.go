@@ -406,18 +406,26 @@ func (engine *Engine) loadTableInfo(table *core.Table) error {
 	for _, name := range colSeq {
 		table.AddColumn(cols[name])
 	}
+
 	indexes, err := engine.dialect.GetIndexes(table.Name)
 	if err != nil {
 		return err
 	}
 	table.Indexes = indexes
 
+	var seq int
 	for _, index := range indexes {
 		for _, name := range index.Cols {
-			if col := table.GetColumn(name); col != nil {
+			parts := strings.Split(name, " ")
+			if len(parts) > 1 {
+				if parts[1] == "DESC" {
+					seq = 1
+				}
+			}
+			if col := table.GetColumn(parts[0]); col != nil {
 				col.Indexes[index.Name] = index.Type
 			} else {
-				return fmt.Errorf("Unknown col %s in index %v of table %v, columns %v", name, index.Name, table.Name, table.ColumnsSeq())
+				return fmt.Errorf("Unknown col %s seq %d, in index %v of table %v, columns %v", name, seq, index.Name, table.Name, table.ColumnsSeq())
 			}
 		}
 	}

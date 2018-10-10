@@ -187,6 +187,15 @@ services:
     - tag
     - pull_request
 
+- name: redis
+  pull: default
+  image: redis:3.0
+  when:
+    event:
+    - push
+    - tag
+    - pull_request
+
 ---
 kind: pipeline
 name: go1.13-test
@@ -387,6 +396,15 @@ services:
 - name: tidb
   pull: default
   image: pingcap/tidb:v3.0.3
+  when:
+    event:
+    - push
+    - tag
+    - pull_request
+
+- name: redis
+  pull: default
+  image: redis:3.0
   when:
     event:
     - push

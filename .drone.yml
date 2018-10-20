@@ -116,6 +116,16 @@ steps:
   commands:
   - "go test -v -race -db=\"mysql\" -conn_str=\"root:@tcp(tidb:4000)/xorm_test\" -ignore_select_update=true -coverprofile=coverage7-1.txt -covermode=atomic"
   - "go test -v -race -db=\"mysql\" -conn_str=\"root:@tcp(tidb:4000)/xorm_test\" -ignore_select_update=true -cache=true -coverprofile=coverage7-2.txt -covermode=atomic"
+
+- name: test-cockroach
+  pull: default
+  image: golang:1.10
+  depends_on:
+    - build
+  commands:
+  - go test -v -race -db="postgres" -conn_str="postgres://postgres:@cockroach/xorm_test?sslmode=disable" -schema=xorm -coverprofile=coverage8-1.txt -covermode=atomic
+  - go test -v -race -db="postgres" -conn_str="postgres://postgres:@cockroach/xorm_test?sslmode=disable" -schema=xorm -cache=true -coverprofile=coverage8-2.txt -covermode=atomic
+
   when:
     event:
     - push
@@ -133,6 +143,7 @@ steps:
   - test-postgres-schema
   - test-mssql
   - test-tidb
+  - test-cockroach
   commands:
   - echo "go1.10 build end"
   when:
@@ -181,6 +192,15 @@ services:
 - name: tidb
   pull: default
   image: pingcap/tidb:v3.0.3
+  when:
+    event:
+    - push
+    - tag
+    - pull_request
+
+- name: cockroach
+  pull: default
+  image: cockroachdb/cockroach:v2.0.6
   when:
     event:
     - push
@@ -321,6 +341,20 @@ steps:
     - push
     - pull_request
 
+- name: test-cockroach
+  pull: default
+  image: golang:1.13
+  environment:
+    GO111MODULE: "on"
+    GOPROXY: "https://goproxy.cn"
+  commands:
+  - go test -v -race -db="postgres" -conn_str="postgres://postgres:@cockroach/xorm_test?sslmode=disable" -schema=xorm -coverprofile=coverage8-1.txt -covermode=atomic
+  - go test -v -race -db="postgres" -conn_str="postgres://postgres:@cockroach/xorm_test?sslmode=disable" -schema=xorm -cache=true -coverprofile=coverage8-2.txt -covermode=atomic
+  when:
+    event:
+    - push
+    - pull_request
+
 - name: merge_coverage
   pull: default
   image: golang:1.13
@@ -337,9 +371,10 @@ steps:
   - test-postgres-schema
   - test-mssql
   - test-tidb
+  - test-cockroach
   commands:
   - go get github.com/wadey/gocovmerge
-  - gocovmerge coverage1-1.txt coverage1-2.txt coverage2-1.txt coverage2-2.txt coverage2.1-1.txt coverage2.1-2.txt coverage3-1.txt coverage3-2.txt coverage4-1.txt coverage4-2.txt coverage5-1.txt coverage5-2.txt coverage6-1.txt coverage6-2.txt coverage7-1.txt coverage7-2.txt > coverage.txt
+  - gocovmerge coverage1-1.txt coverage1-2.txt coverage2-1.txt coverage2-2.txt coverage2.1-1.txt coverage2.1-2.txt coverage3-1.txt coverage3-2.txt coverage4-1.txt coverage4-2.txt coverage5-1.txt coverage5-2.txt coverage6-1.txt coverage6-2.txt coverage7-1.txt coverage7-2.txt coverage8-1.txt coverage8-2.txt > coverage.txt
   when:
     event:
     - push
@@ -387,6 +422,15 @@ services:
 - name: tidb
   pull: default
   image: pingcap/tidb:v3.0.3
+  when:
+    event:
+    - push
+    - tag
+    - pull_request
+
+- name: cockroach
+  pull: default
+  image: cockroachdb/cockroach:v2.0.6
   when:
     event:
     - push

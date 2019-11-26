@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/marlofan/xorm"
+	"github.com/marlonfan/xorm"
 )
 
 // MigrateFunc is the func signature for migrating.

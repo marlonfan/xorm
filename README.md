@@ -4,8 +4,8 @@
 
 Xorm is a simple and powerful ORM for Go.
 
-[![Build Status](https://drone.gitea.com/api/badges/xorm/xorm/status.svg)](https://drone.gitea.com/xorm/xorm) [![](http://gocover.io/_badge/github.com/marlofan/xorm)](https://gocover.io/github.com/marlofan/xorm)
-[![](https://goreportcard.com/badge/github.com/marlofan/xorm)](https://goreportcard.com/report/github.com/marlofan/xorm)
+[![Build Status](https://drone.gitea.com/api/badges/xorm/xorm/status.svg)](https://drone.gitea.com/xorm/xorm) [![](http://gocover.io/_badge/github.com/marlonfan/xorm)](https://gocover.io/github.com/marlonfan/xorm)
+[![](https://goreportcard.com/badge/github.com/marlonfan/xorm)](https://goreportcard.com/report/github.com/marlonfan/xorm)
 [![Join the chat at https://img.shields.io/discord/323460943201959939.svg](https://img.shields.io/discord/323460943201959939.svg)](https://discord.gg/HuR2CF3)
 
 ## Features
@@ -56,13 +56,13 @@ Drivers for Go's sql package which currently support database/sql includes:
 
 ## Installation
 
-	go get github.com/marlofan/xorm
+	go get github.com/marlonfan/xorm
 
 ## Documents
 
 * [Manual](http://xorm.io/docs)
 
-* [GoDoc](http://godoc.org/github.com/marlofan/xorm)
+* [GoDoc](http://godoc.org/github.com/marlonfan/xorm)
 
 ## Quick Start
 

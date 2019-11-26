@@ -1,4 +1,4 @@
-module github.com/marlofan/xorm
+module github.com/marlonfan/xorm
 
 go 1.11
 

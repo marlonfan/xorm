@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/marlofan/xorm"
+	"github.com/marlonfan/xorm"
 	_ "github.com/lib/pq"
 	_ "github.com/mattn/go-sqlite3"
 )

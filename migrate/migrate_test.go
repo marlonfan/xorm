@@ -6,7 +6,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/marlofan/xorm"
+	"github.com/marlonfan/xorm"
 	_ "github.com/mattn/go-sqlite3"
 	"github.com/stretchr/testify/assert"
 )

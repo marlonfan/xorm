@@ -886,3 +886,8 @@ func (session *Session) incrVersionFieldValue(fieldValue *reflect.Value) {
 		fieldValue.SetUint(fieldValue.Uint() + 1)
 	}
 }
+
+// Statement 暴露 statement
+func (session *Session) Statement() Statement {
+	return session.statement
+}

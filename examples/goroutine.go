@@ -6,7 +6,7 @@ import (
 	"runtime"
 
 	_ "github.com/go-sql-driver/mysql"
-	"xorm.io/xorm"
+	"github.com/marlofan/xorm"
 	_ "github.com/mattn/go-sqlite3"
 )
 

@@ -4,8 +4,8 @@
 
 xorm是一个简单而强大的Go语言ORM库. 通过它可以使数据库操作非常简便。
 
-[![Build Status](https://drone.gitea.com/api/badges/xorm/builder/status.svg)](https://drone.gitea.com/xorm/builder) [![](http://gocover.io/_badge/xorm.io/xorm)](https://gocover.io/xorm.io/xorm)
-[![](https://goreportcard.com/badge/xorm.io/xorm)](https://goreportcard.com/report/xorm.io/xorm)
+[![Build Status](https://drone.gitea.com/api/badges/xorm/builder/status.svg)](https://drone.gitea.com/xorm/builder) [![](http://gocover.io/_badge/github.com/marlofan/xorm)](https://gocover.io/github.com/marlofan/xorm)
+[![](https://goreportcard.com/badge/github.com/marlofan/xorm)](https://goreportcard.com/report/github.com/marlofan/xorm)
 [![Join the chat at https://img.shields.io/discord/323460943201959939.svg](https://img.shields.io/discord/323460943201959939.svg)](https://discord.gg/HuR2CF3)
 
 ## 特性
@@ -56,13 +56,13 @@ xorm是一个简单而强大的Go语言ORM库. 通过它可以使数据库操作
 
 ## 安装
 
-	go get xorm.io/xorm
+	go get github.com/marlofan/xorm
 
 ## 文档
 
 * [操作指南](http://xorm.io/docs)
 
-* [Godoc代码文档](http://godoc.org/xorm.io/xorm)
+* [Godoc代码文档](http://godoc.org/github.com/marlofan/xorm)
 
 # 快速开始
 
@@ -487,7 +487,7 @@ res, err := engine.Transaction(func(session *xorm.Session) (interface{}, error) 
     * 自动读写分离支持
     * Query/QueryString/QueryInterface 支持与 Where/And 合用
     * `Get` 支持获取非结构体变量
-    * `Iterate` 支持 `BufferSize` 
+    * `Iterate` 支持 `BufferSize`
     * 修正部分Bug
 
 [更多更新日志...](https://github.com/go-xorm/manual-zh-CN/tree/master/chapter-16)

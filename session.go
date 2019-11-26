@@ -888,6 +888,6 @@ func (session *Session) incrVersionFieldValue(fieldValue *reflect.Value) {
 }
 
 // Statement 暴露 statement
-func (session *Session) Statement() Statement {
-	return session.statement
+func (session *Session) Statement() *Statement {
+	return &session.statement
 }
